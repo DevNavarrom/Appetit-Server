@@ -40,7 +40,7 @@ export default class PlatoModel {
     public static getNutrientes(id_plato: number): Promise<any>{
         return MySql.getInstancia().query(
             `SELECT nut.${ID} as id_nutriente, nut.${NOMBRE} AS nutriente FROM ${TABLA_NUTRIENTES} as nut 
-                    INNER JOIN ${TABLA_PLATO_NUTRIENTE} as planut ON platnut.${ID_NUTRIENTE} = nut.${ID}
+                    INNER JOIN ${TABLA_PLATO_NUTRIENTE} as planut ON planut.${ID_NUTRIENTE} = nut.${ID}
                     WHERE planut.${ID_PLATO} = ?`,
             [ id_plato.toString() ]
         );
