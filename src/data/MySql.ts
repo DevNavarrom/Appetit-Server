@@ -12,8 +12,8 @@ export default class MySql {
     private constructor() {
         this.conexion = mysql.createConnection({
             host: process.env.PAFYS_HOST_BD || 'localhost',
-            user: process.env.PAFYS_USER_DB || 'root',
-            password: process.env.PAFYS_PASS_BD || 'unicor123',
+            user: process.env.PAFYS_USER_DB || 'myself',
+            password: process.env.PAFYS_PASS_BD || '',
             database: process.env.PAFYS_NAME_DB || 'appetit',
             dateStrings: true
         });
