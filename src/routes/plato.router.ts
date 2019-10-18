@@ -61,4 +61,44 @@ rutas.get('/:idPlato/detalles', (req: Request, res: Response) => {
 
 });
 
+rutas.get('/:idPlato/ingredientes', (req: Request, res: Response) => {
+    let idPlato = req.params.idPlato;
+    
+    PlatoModel.getIngredientes(parseInt(idPlato))
+        .then( ingredientes => {
+            res.json({
+                "okay": true,
+                "respuesta": ingredientes
+            });
+        })
+        .catch( err => {
+            console.log(`ERROR AL OBTENER LOS INGREDIENTES ${ err }`);
+
+            res.json({
+                "okay": false,
+                "respuesta": "Error"
+            });
+        });
+});
+
+rutas.get('/:idPlato/nutrientes', (req: Request, res: Response) => {
+    let idPlato = req.params.idPlato;
+    
+    PlatoModel.getNutrientes(parseInt(idPlato))
+        .then( nutrientes => {
+            res.json({
+                "okay": true,
+                "respuesta": nutrientes
+            });
+        })
+        .catch( err => {
+            console.log(`ERROR AL OBTENER LOS NUTRIENTES ${ err }`);
+
+            res.json({
+                "okay": false,
+                "respuesta": "Error"
+            });
+        });
+});
+
 export default rutas;
